@@ -1,0 +1,9 @@
+change directory:
+     $ cd dataset_samples
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=dataset-samples:* npm start
+
