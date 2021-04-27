@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:fermium'
+            args '-u 0:0'
         }
     }
     environment {
@@ -19,6 +20,7 @@ pipeline {
     stages {
         stage('Preparing workspace') {
             steps {
+                sh 'chown -R 996:992 ./'
                 sh 'chmod -R 777 ./'
                 echo 'Creating services folder'
             }
