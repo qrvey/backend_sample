@@ -6,6 +6,15 @@ describe('User: User crud', function () {
 
     it('It should create a user', async function () {
         this.timeout(25000);
+
+        console.log('MYSQL_HOST', process.env.MYSQL_HOST);
+        console.log('MYSQL_USER', process.env.MYSQL_USER);
+        console.log('MYSQL_PASSWORD', process.env.MYSQL_PASSWORD);
+        console.log('MYSQL_TABLE_NAME', process.env.MYSQL_TABLE_NAME);
+        console.log('MYSQL_DATABASE_NAME', process.env.MYSQL_DATABASE_NAME);
+        console.log('DOMAIN', process.env.DOMAIN);
+        console.log('API_KEY', process.env.API_KEY);
+        
         let userDetails = {
             email,
             password: 'qrvey123',

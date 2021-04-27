@@ -1,10 +1,4 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:fermium'
-            args '-u 0:0'
-        }
-    }
     environment {
         MYSQL_HOST=credentials('MYSQL_HOST')
         MYSQL_USER=credentials('MYSQL_USER')
@@ -15,6 +9,13 @@ pipeline {
         DOMAIN=credentials('MANUAL_DOMAIN')
         API_KEY=credentials('MANUAL_API_KEY')
         NODE_ENV='development'
+    }
+
+    agent {
+        docker {
+            image 'node:fermium'
+            args '-u 0:0'
+        }
     }
 
     stages {
