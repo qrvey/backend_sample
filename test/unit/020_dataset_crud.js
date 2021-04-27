@@ -9,7 +9,7 @@ let Dataset = require('../../lib/dataset');
 describe('Dataset: Dataset crud', function () {
 
     let userId, appId, connectionId, datasetId,
-        email = 'alberto.valle+cx010@qrvey.com',
+        email = 'alberto.valle+cx020@qrvey.com',
         appName = 'CX application',
         appDescription = 'App description';
 

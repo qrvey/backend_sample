@@ -4,8 +4,8 @@ const mysqlData = {
     password: process.env.MYSQL_PASSWORD,
     databases: {
         demo: {
-            tableName: 'airlines',
-            databaseName: 'Demo',
+            tableName: process.env.MYSQL_TABLE_NAME,
+            databaseName: process.env.MYSQL_DATABASE_NAME,
         }
     }
 };
