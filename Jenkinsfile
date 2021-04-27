@@ -17,6 +17,12 @@ pipeline {
     }
 
     stages {
+        stage('Preparing workspace') {
+            steps {
+                sh 'chmod -R 777 ./'
+                echo 'Creating services folder'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
