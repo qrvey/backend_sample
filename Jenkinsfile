@@ -18,6 +18,10 @@ pipeline {
         }
     }
 
+    triggers {
+        cron('@midnight')
+    }
+
     stages {
         stage('Preparing workspace') {
             steps {
