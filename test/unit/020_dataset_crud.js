@@ -142,7 +142,31 @@ describe('Dataset: Dataset crud', function () {
 
     it('It should get load an existing dataset', async function () {
         this.timeout(30000);
-        await new Promise(resolve => setTimeout(resolve, 28000));
+
+        let status = 'LOADING';
+
+        while (status === 'LOADING') {
+
+            let datasetItem = await Dataset.getDataset(userId, appId, datasetId);
+
+            expect(datasetItem).to.be.a('object');
+            expect(datasetItem).to.have.property('datasetId').to.be.a('string');
+            expect(datasetItem).to.have.property('appId').to.be.a('string').to.be.eq(appId);
+            expect(datasetItem).to.have.property('userId').to.be.a('string').to.be.eq(userId);
+            expect(datasetItem).to.have.property('datasources').to.be.a('array').to.has.lengthOf(1);
+            expect(datasetItem.datasources[0]).to.have.property('connectionId').to.be.a('string').to.be.eq(connectionId);
+            expect(datasetItem.datasources[0]).to.have.property('database').to.be.a('string').to.be.eq(mysqlData.databases.demo.databaseName);
+            expect(datasetItem).to.have.property('status').to.be.a('string').to.be.oneOf(['LOADING', 'FAILED', 'LOADED']);
+            expect(datasetItem).to.have.property('columns').to.be.a('array');
+
+            status = datasetItem.status;
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+
+
+        expect(status).to.be.a('string').to.be.oneOf(['FAILED', 'LOADED']);
+
         return Promise.resolve('OK');
     });
 
